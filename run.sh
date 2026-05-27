@@ -8,10 +8,12 @@ if [ -f /data/params ]; then
     set +a
 fi
 
-export MYSQL_HOST="${MYSQL_HOST:-mysql}"
-export MYSQL_USER="${MYSQL_USER:-ratings}"
-export MYSQL_PASSWORD="${MYSQL_PASSWORD:-RoboShop@1}"
-export MYSQL_DATABASE="${MYSQL_DATABASE:-ratings}"
-export PORT="${PORT:-8080}"
+: "${MYSQL_HOST:?MYSQL_HOST is required}"
+: "${MYSQL_USER:?MYSQL_USER is required}"
+: "${MYSQL_PASSWORD:?MYSQL_PASSWORD is required}"
+: "${MYSQL_DATABASE:?MYSQL_DATABASE is required}"
+: "${PORT:?PORT is required}"
+
+export MYSQL_HOST MYSQL_USER MYSQL_PASSWORD MYSQL_DATABASE PORT
 
 exec gunicorn -b "0.0.0.0:${PORT}" -w 2 app:app
