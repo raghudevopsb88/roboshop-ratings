@@ -16,4 +16,4 @@ fi
 
 export MYSQL_HOST MYSQL_USER MYSQL_PASSWORD MYSQL_DATABASE PORT
 
-exec gunicorn -b "0.0.0.0:${PORT}" -w 2 app:app
+exec python3.12 -m gunicorn -b "0.0.0.0:${PORT}" -w 2 app:app
