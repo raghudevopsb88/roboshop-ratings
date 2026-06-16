@@ -14,4 +14,4 @@ docker-build-db:
 
 argocd-deploy:
 	argocd login $(argocd_server) --skip-test-tls --username admin --password $(argocd_admin_password)
-	argocd app create roboshop-ratings --sync-policy auto --upsert --repo https://github.com/raghudevopsb88/roboshop-helm-v1.git --path . --dest-server https://kubernetes.default.svc --dest-namespace default --helm-set-string image_tag=$(image_tag) --values values/roboshop-ratings.yml
+	argocd app create roboshop-ratings --sync-policy auto --upsert --repo https://github.com/raghudevopsb88/roboshop-helm-v1.git --path . --dest-server https://kubernetes.default.svc --dest-namespace roboshop --helm-set-string image_tag=$(image_tag) --values values/roboshop-ratings.yml
